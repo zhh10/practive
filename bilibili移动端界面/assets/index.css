@@ -1,0 +1,294 @@
+/*  header CSS 部分 */
+html,body{
+    height:100%
+}
+#app{
+    height:100%;
+    overflow-y: scroll;
+}
+
+.header{
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;
+    padding-top:10px;
+    padding-bottom:15px;
+    position: fixed;
+    top:0;
+    width:100%;
+    z-index:3;
+    background:#fff;
+}
+
+.header .logo{
+    margin-left:18px;
+}
+
+.header .search-input{
+    width:132px;
+    height:24px;
+    margin-left:5px;
+    color:#999;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    font-size:10px;
+    display:flex;
+    align-items: center;
+}
+.header .search-input svg{
+    margin-left:10px
+}
+
+.header .search-input span{
+    display: block; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.header .avatar svg{
+    border-radius: 50%;
+} 
+
+.header .download-App{
+    font-size:12px;
+    background-color: #fb7299;
+    height:23px;
+    line-height:23px;
+    padding-left:10px;
+    padding-right:10px;
+    text-align:center;
+    margin-right:12px;
+    border-radius: 4px;
+    color:#fff;
+    cursor: pointer;
+}
+
+.nav-box{
+    position: fixed;
+    top:54px;
+    width:100%;
+    background-color:#fff;
+    z-index:1;
+}
+.nav-box .nav-list{
+    width:85%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    padding-left:24px;
+}
+
+/* 干掉滚动条 */
+.nav-box .nav-list::-webkit-scrollbar{
+    display: none;
+}
+
+.nav-box .nav{
+    display:inline-block;
+    height:30px;
+    line-height:30px;
+    margin-right:40px;
+    font-size:14px;
+    color:#757575;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-box .nav.active{
+    border-color:#fb7299;
+    color:#fb7299
+}
+.nav-box .down{
+    position: absolute;
+    right:13px;
+    top:-3px;
+}
+
+.nav-hideBox{
+    position:fixed;
+    top:54px;
+    width:100%;
+    padding-bottom:20px;
+    background-color: #fff;
+    z-index:2;
+    transition: top .3s;
+}
+
+.nav-hideBox .nav{
+    display: inline-block;
+    width:32px;
+    text-align: center; 
+    margin-left:14px;
+    margin-right:14px;
+    margin-bottom:10px;
+    padding-top:6px;
+    padding-bottom:6px;
+    font-size:14px;
+    color:#757575;
+    border-bottom:2px solid transparent;
+}
+
+.nav-hideBox .nav.active{
+    border-color:#fb7299;
+    color:#fb7299
+}
+
+.nav-hideBox .big{
+    width:46px;
+    margin-left:7px;
+    margin-right:7px
+}
+
+.nav-hideBox .up{
+    position: absolute;
+    bottom:0;
+    left:50%;
+    transform: translateX(-50%); 
+}
+
+.nav-hideBox.hide {
+    top: -117px;
+  }
+
+.banner-box{
+    position:relative;
+    top:90px;
+    left:50%;
+    transform:translateX(-50%);
+    width:350px;
+    height:110px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.banner-box .banner-list{
+    position: absolute;
+    width:calc(350px*4);
+    /* left:0px; */
+    /* transition:left .3s; */
+}
+
+.banner-box .banner-list .banner{
+    float:left;
+    width:350px;
+    height:110px;
+}
+
+.banner-box .banner-list .poster{
+    width:100%;
+    height:100%;
+}
+.banner-box .index-list{
+    display:flex;
+    align-items: center;
+    position: absolute;
+    bottom:3px;
+    left:50%;
+    transform:translateX(-50%);
+    height:10px;
+    padding-left: 3px; 
+    padding-right:3px;
+    background-color: rgba(0,0,0,.5) ;
+    border-radius: 5px;
+}
+
+.banner-box .index{
+    width:5px;
+    height: 5px;
+    border-radius:50%;
+    margin-left:3px;
+    margin-right:3px;
+    background-color: #fff;
+}
+
+.banner-box .index.active{
+    background-color:#fb7299
+}
+
+.video-box{
+    padding-top:100px;
+    padding-left:6px;
+    padding-right:6px
+}
+
+.video-box .video-list:after{
+    content:"";
+    display:block;
+    clear:both;
+}
+
+.video-box .video{
+    float:left;
+    width:50%;
+}
+
+.video-box .poster{
+    position: relative;
+    height:106px;
+    margin-right:6px;
+    margin-left:6px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.video-box .poster img{
+    width:100%;
+    height:100%;
+}
+
+.video-box .info{
+    position: absolute;
+    bottom:0;
+    width:100%;
+    height:20px;
+    padding-top:7px;
+    color:#fff;
+    font-size:12px;
+    background-image: linear-gradient(rgba(33,33,33,0),rgba(33,33,33,.5));
+}
+
+.video-box .info div{
+    display: inline-flex;
+    margin-right:10px;
+    align-items: center;
+}
+
+.video-box .info svg{
+    fill:#fff;
+    margin-right:3px;
+    width:14px;
+    height:14px;
+}
+
+.video-box .title{
+    margin:6px 6px 10px 6px;
+    height:38px;
+    line-height:20px;
+    overflow:hidden;
+    font-size:13px;
+    /* 多行文本溢出打点： */
+    overflow: hidden;
+    /* 设置盒子为伸缩盒 */
+    display: -webkit-box;
+    /* 设置伸缩盒内子元素的排列方式为vertical */
+    -webkit-box-orient: vertical;
+    /* 限制一个块元素内显示的文本行数 */
+    -webkit-line-clamp: 2;
+}
+
+.footer{
+    margin-top:40px;
+    text-align: center;
+}
+
+.footer p{
+    margin-bottom:20px;
+    font-size:13px;
+    color:#999;
+}
+.footerImg{
+    width:100%;
+    text-align: center;
+}
+
+.footerImage{
+    width:40%;
+}
