@@ -1,0 +1,122 @@
+*{
+    padding:0;
+    margin:0;
+}
+html,body{
+    height:90%
+}
+.wrapper{
+    width:600px;
+    margin:0 auto;
+    background-color: #eee;
+    border: 1px solid #eee;
+    height:calc(100% - 2px);
+    position: relative;
+    overflow: hidden;
+}
+
+.header{
+    height:40px;
+    background-color: #808080;
+    text-align: center;
+    line-height: 40px;
+    color:#fff;
+    font-weight: 700;;
+}
+
+.send{
+    width:100%;
+    height:50px;
+    position: absolute; 
+    bottom:0px;
+    background-color: #ddd;
+    line-height: 50px;
+    text-align: center;
+    font-size: 0;
+}
+
+#inp{
+    height:30px;
+    line-height: 30px;
+    width:500px;
+    font-size: 14px;
+    display: inline-block; 
+    border:none;
+    outline:none;
+    vertical-align: middle;
+    text-indent: 20px;
+}
+
+#submit{
+    display: inline-block;
+    height:30px;
+    width: 50px;
+    background-color: #ccc;
+    font-size: 14px; 
+    outline:none;
+    border:none;
+    vertical-align: middle;
+}
+
+.content{
+    padding:10px;
+    height:calc(100% - 40px - 50px);
+    overflow:auto;
+}
+
+.mine{
+    width:500px
+}
+
+.logo{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.mine .logo{
+    background-image: url(./image/3.png);
+    float:right;
+}
+
+.robot .logo{
+    background-image: url(./image/dog1.jpg);
+    float:left;
+}
+
+.mine{
+    float:right;
+}
+.text{
+    max-width:250px;
+    font-size:16px;
+    padding:0 10px;
+    border-radius: 3px;
+    line-height: 30px;
+}
+
+
+.mine .text{
+    float:right;
+    background-color: greenyellow;
+    margin-right: 10px;
+}
+
+.robot{
+    float:left;  
+}
+
+.robot .text{
+    float:left;
+    background-color: #fff;;
+    margin-left:10px;
+    margin-bottom:10px;
+}
+
+#submit:hover{
+    cursor: pointer;
+    background-color: greenyellow;
+}
