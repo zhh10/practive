@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>	</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	ul{
+
+		list-style: none;
+		height:100px;
+		width:600px;
+		margin:100px auto ;
+
+	}
+	li.demo{
+		float:left;
+		width:150px;
+		height:100px;
+		background-color: transparent;
+		box-sizing: border-box;
+		border:1px solid black;
+		text-align: center;
+		line-height: 100px;
+	}
+	
+	.bg{
+		position: absolute;
+		width:150px; 
+		height:100px;
+		background-color: orange;
+		left:263px;
+		top:100px;
+		z-index:-1;
+		opacity: 0.5;
+	}
+</style>
+</head>
+<body>
+<ul>
+	<li class="demo">周周</li>
+	<li class="demo">爱</li>
+	<li class="demo">pipi</li>
+	<li class="demo">1个</li>
+	<li class="bg"></li>
+</ul>
+
+
+
+<script>
+	var li = document.getElementsByTagName('li') ;
+	var bg = li[li.length-1] ;
+	var timer = null;
+	for(var i = 0;i<li.length-1;i++){
+		li[i].onmouseenter = function(){
+			startmove(bg,this.offsetLeft)
+		}
+	}
+
+	function startmove(bg,target){
+		clearInterval(timer) 
+		var a = 3;
+		var speed = 0;
+		var u = 0.8; 
+		timer = setInterval(function(){
+			a = (target - bg.offsetLeft) /3
+			speed += a ;
+			speed *= u ; 
+			if(Math.abs(speed) < 1 && Math.abs(target - bg.offsetLeft)<1){
+				bg.style.left = target + 'px'; 
+				clearInterval(timer)
+				}else{
+					bg.style.left = bg.offsetLeft + speed + 'px';
+					// console.log(speed)
+				}
+			
+		},100)
+	}
+</script>
+</body>
+</html>
