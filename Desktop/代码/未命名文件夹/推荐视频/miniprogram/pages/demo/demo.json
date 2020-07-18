@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "my-badge":"../miniprogram_npm/weui-miniprogram/badge/badge",
-    "my-icon":"../miniprogram_npm/weui-miniprogram/icon/icon"
-  }
-}

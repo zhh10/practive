@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "myTestComponent":"/components/test/test",
-    "videoGroup":"/components/videoGroup/videoGroup"
-  }
-}
