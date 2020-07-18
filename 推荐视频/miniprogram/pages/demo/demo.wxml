@@ -1,0 +1,4 @@
+<view>
+  <my-icon type="field" icon="star" color="black" size="{{25}}"></my-icon>
+  <my-icon  icon="star" color="black" size="{{25}}"></my-icon>
+</view>
