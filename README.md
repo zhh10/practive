@@ -27,7 +27,7 @@
 - 微信涂鸦板
 - 表单提交工单
 - 快递查询
-- 视频推荐
+- [视频推荐](https://github.com/zhh10/practive/tree/master/%E6%8E%A8%E8%8D%90%E8%A7%86%E9%A2%91)
 
 ### node 
 - 验证码
