@@ -1,0 +1,21 @@
+.section{
+  margin-top:20px;
+}
+input{
+  border: 1px solid black;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left:20px;
+  padding: 0 5px;
+}
+.btn-content{
+  margin-top: 20px;
+}
+.btn-content view{
+  text-align:center;
+}
+button{
+  box-sizing: border-box;
+  width:100px !important;
+  border: 1px solid black;
+}
