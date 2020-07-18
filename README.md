@@ -2,6 +2,7 @@
 
 ### HTML\CSS 
 - 淘宝静态页面
+- 小球运动
 
 ### AJAX
 - [聊天机器人](https://github.com/zhh10/practive/tree/master/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA)
@@ -10,6 +11,7 @@
 ### JQuery 
 - JQuery部分源码练习
 - 京东商城首页
+- 轮播图插件
 
 ### CSS3
 - [照片墙](https://github.com/zhh10/practive/tree/master/%E7%85%A7%E7%89%87%E5%A2%99)
