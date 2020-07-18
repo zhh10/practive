@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		.wrapper{
+			position: relative;
+			width:400px;
+			height:200px;
+			margin:100px auto 0;
+			overflow: hidden;
+		}
+
+		.sliderPage{
+			list-style: none;
+			width:2000px;
+			height:200px;
+			position: absolute;
+
+		}
+		li{
+			float:left;
+			width:400px;
+			height:200px;
+		}
+
+		img{
+			width:400px;
+			height:200px;
+		}
+
+		.btn{
+			position: absolute;
+			width:30px;
+			height:30px;
+			line-height: 30px;
+			background-color: #000;
+			color:#fff;
+			text-align: center;
+			opacity: 0.2;
+		}
+		.btn:hover{
+			opacity:1;
+			cursor: pointer;
+		}
+		.leftBtn{
+			position: absolute;
+			left:15px;
+			top:50%;
+			margin-top:-15px;
+			
+		}
+
+		.rightBtn{
+			position: absolute;
+			right:15px;
+			top:50%;
+			margin-top:-15px;
+		}
+
+		.sliderIndex{
+			position: absolute;
+			width:100%; 
+			height:15px;
+			top:90%;
+			text-align: center;
+		}
+
+		.sliderIndex span{
+			display: inline-block;
+			line-height: 5px;
+			border-radius: 50%;
+			width:5px;
+			height:5px;
+			background-color: #fff;
+			margin-right:10px;
+		}
+
+		.sliderIndex span.active{
+			background-color: red;
+		}
+
+		.sliderIndex span:hover{
+			cursor: pointer;}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul class="sliderPage">
+			<li>
+				<img src="./cat1.jpg">
+			</li>
+			<li>
+				<img src="./cat2.jpg">
+			</li>
+			<li>
+				<img src="./cat3.jpg">
+			</li>
+			<li>
+				<img src="./cat4.jpg">
+			</li>
+			<li>
+				<img src="./cat1.jpg">
+			</li>		
+		</ul>
+		<div class='btn leftBtn'>&lt;</div>
+        <div class='btn rightBtn'>&gt;</div>
+        <div class='sliderIndex'>
+        	<span class="active"></span>
+        	<span></span>
+        	<span></span>
+        	<span></span>
+        </div>
+	</div>
+
+
+	<script type="text/javascript" src="./move.js"></script>
+	<script type="text/javascript">
+		//默认方向是 left -> right  
+		var sliderPage = document.getElementsByClassName('sliderPage')[0]
+		var num = sliderPage.children.length - 1 
+		var movewidth = sliderPage.children[0].offsetWidth;
+		var leftbtn = document.getElementsByClassName('leftBtn')[0]
+		var rightbtn = document.getElementsByClassName('rightBtn')[0]
+		var oSpanArray = document.getElementsByClassName('sliderIndex')[0].getElementsByTagName('span');
+		var Lock = false;
+		var index = 0;
+
+		for(var i = 0;i<oSpanArray.length;i++){
+			(function(num){
+				oSpanArray[num].onclick = function(){
+					Lock = true;
+					clearTimeout(timer);
+					index = num;
+					startMove(sliderPage,{left:-num*movewidth},function(){
+						Lock = false;
+						changeIndex(index);
+						setTimeout(automove,1500);
+					})
+				}
+			}(i))
+		}
+
+		leftbtn.onclick = function(){
+			automove('right->left')
+		}
+
+		rightbtn.onclick =function(){
+			automove('left->right')
+		}
+
+
+		function automove(direction){
+			if(Lock == false){
+				Lock = true;
+				clearTimeout(timer)
+				if(!direction || direction == 'left->right'){
+					index++;
+					startMove(sliderPage,{left:sliderPage.offsetLeft - movewidth},function(){
+						if(sliderPage.offsetLeft == -num * movewidth){
+							sliderPage.style.left = '0px';
+							index = 0;	
+						};
+					Lock = false;
+					timer = setTimeout(automove,1500);
+					changeIndex(index)
+					//不能把changeIndex放在上面 因为index=4的是要被变成0的；
+					})
+				}else if(direction == 'right->left'){
+					if(sliderPage.offsetLeft == 0){
+						sliderPage.style.left = -num * movewidth +'px';
+						index = num;
+					}
+					index -- ;
+					startMove(sliderPage,{left:sliderPage.offsetLeft + movewidth},function(){
+						Lock = false;
+						changeIndex(index)
+						console.log(index)
+						timer = setTimeout(function(){automove('right->left')},1500)});
+						
+					}
+				}
+			}
+		
+		function changeIndex(index){
+			for(var i =0 ;i<oSpanArray.length;i++){
+				oSpanArray[i].className = '';
+			}
+			oSpanArray[index].className = 'active';
+		}
+		// timer = setTimeout(automove,1500)
+		timer = setInterval(function(){automove('right->left')},1500)
+	</script>
+
+</body>
+</html>
