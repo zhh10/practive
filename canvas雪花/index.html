@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding:0;
+		}
+		html,body{
+			overflow:hidden;
+		}
+		#canvas{
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='canvas'></canvas>
+	<script type="text/javascript">
+		let myCanvas = document.querySelector('canvas')
+		let ctx = myCanvas.getContext('2d')
+
+		let snowArray = []
+		// 设置canvas宽高属性
+		ctx.canvas.width = window.innerWidth 
+		ctx.canvas.height = window.innerHeight
+
+
+		function Snow(x,scale,rotate,speedX,speedY,speedR){
+			this.x = x 
+			this.y = 0
+			this.scale = scale
+			this.rotate = rotate
+			this.speedX = speedX
+			this.speedY = speedY
+			this.speedR = speedR
+
+			this.render = function(){
+				ctx.save()
+				ctx.beginPath() 
+				ctx.strokeStyle = '#fff'
+				ctx.lineWidth = 10
+				ctx.lineCap = 'round'
+				ctx.translate(this.x,this.y)
+				ctx.scale(this.scale,this.scale)
+				ctx.rotate((this.rotate * Math.PI)/180)
+				ctx.moveTo(-20,0)
+				ctx.lineTo(20,0)
+				// 将角度转化成弧度
+				let disX = 20*Math.sin((30*Math.PI)/180)
+				let disY = 20*Math.sin((60*Math.PI)/180)
+				ctx.moveTo(-disX,-disY)
+				ctx.lineTo(disX,disY)
+
+				ctx.moveTo(-disX,disY) 
+				ctx.lineTo(disX,-disY) 
+
+				ctx.stroke()
+				ctx.closePath() 
+				ctx.restore() 
+			}
+		} 
+		
+		function init(){
+			let len = 80 
+			for(let i = 0;i<len;i++){
+				let x = Math.random() * ctx.canvas.width 
+				// 生成水平位置的随机数
+				let scale = Math.random() + 0.5 
+				// 生成缩放的随机数
+				let rotate = Math.random() * 60
+				let speedX = Math.random() +1 
+				let speedY = Math.random() +2 
+				let speedR = Math.random() * 4 + 2
+				setTimeout(function(){
+					var snow = new Snow(x,scale,rotate,speedX,speedY,speedR)
+					snow.render()
+					snowArray.push(snow)
+				},Math.random()*4000)
+				// 延迟生成
+				run() 
+			}
+		}
+		function run(){
+			setInterval(function(){
+				ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height)
+				snowArray.forEach(item => {
+					item.x = (item.x+item.speedX)%ctx.canvas.width;
+					item.y = (item.y+item.speedY)%ctx.canvas.height
+					item.rotate = (item.rotate+item.speedR)%60
+					item.render() 
+				})
+			},30)
+		}
+		init()
+	</script>
+</body>
+</html>
